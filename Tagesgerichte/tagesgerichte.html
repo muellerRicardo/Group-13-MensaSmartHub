@@ -1,86 +1,28 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<style>
-			.Gerichte {
-				margin: auto;
-				display: flex;
-				flex-direction: row;
-				flex-wrap: wrap;
-				justify-content: start;
-				align-items: left;
-				align-content: left;
-			}
-			
-			.Gerichte > div {
-				background-color: white;
-				padding: 40px;
-			}
-			
-			.Details {
-				font-family: Comic Sans MS;
-				color: black;
-				background-color: white;
-				font-size: 20px;
-				opacity: 1;
-				z-index: 1;
-			}
-			
-			.articlecard {
-				flex: 1 1 1rem;
-				position: relative;
-				text-align: center;
-				background-color: white;
-				height: 100%;
-				width: 100%:
-				max-height: 20%;
-				min-height: 15%;
-				max-width: 40%;
-				min-width: 25%;
-			}
-			
-			.articlecard img {
-				width: 100%;
-				height: 300px;
-				object-fit: cover;
-			}
-			
-			.foodname {
-				font-family: Comic Sans MS;
-				color: black;
-				font-size: 25px;
-				text-align: center;
-			}
-			
-			.description {
-				font-family: Comic Sans MS;
-				color: black;
-				font-size: 20px;
-				text-align: left;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-			}
-
-			h1 {
-				font-family: Comic Sans MS;
-				color: black;
-				font-size: 40px;
-				text-align: center;
-			}
-			
-		</style>
+		<link rel="stylesheet" href="style.css">
+		<script src="script.js"></script>
 	</head>
 	<body>
 		<h1 id="gerichte">
 			Tagesgerichte
 		</h1>
+
+		<div class="day_selection">
+			<hr class="rounded" width="30%">
+			<div class="day_backwards" onclick="day_backwards(event)">&#9664;</div>
+			<div class="day" id="day">Montag 01.01.2024</div>
+			<div class="day_forwards" onclick="day_forwards(event)">&#9654;</div>
+			<hr class="rounded" width="30%">
+		</div>
+
 		<div class="Gerichte">
 			<div class="articlecard">
 				<div class="foodname">
 					Essen 1
 				</div>
-				<img src="wide.jpg" alt="Wide";>
+				<img src="wide.jpg" alt="Wide" id="meal_1">
 				<div class="description">
 					vegan, glutenfrei
 					<span style="float:right;">
