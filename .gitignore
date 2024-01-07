@@ -134,3 +134,6 @@ test/javascript/junit.xml
 *.lock
 
 .tool-versions
+
+CouchDB/data/shards/00000000-7fffffff/gmci.1704388752.couch
+CouchDB/data/shards/80000000-ffffffff/gmci.1704388752.couch
