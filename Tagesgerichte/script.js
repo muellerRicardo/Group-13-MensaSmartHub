@@ -30,3 +30,47 @@ function updateDetails(input){
 	document.getElementById("salz_1").textContent = details_1[counter][5];
 	document.getElementById("ballaststoffe_1").textContent = details_1[counter][6];
 }
+
+function toggleDropdown() {
+            var dropdown = document.getElementById('filter-dropdown');
+            dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+        }
+
+function toggleFilter(filter) {
+    var filterButton = document.getElementById('filter-' + filter);
+
+    if (filter === 'alles') {
+        // Reset all filters
+        var filters = document.querySelectorAll('.dropdown-btn');
+        filters.forEach(function (f) {
+            f.classList.remove('selected');
+        });
+
+        // Show all cards
+        var cards = document.querySelectorAll('.articlecard');
+        cards.forEach(function (card) {
+            card.style.display = 'inline-block';
+        });
+    } else {
+        // Toggle the selected state for the filter
+        filterButton.classList.toggle('selected');
+
+        // Implement your filtering logic here based on the selected filters
+        var selectedFilters = document.querySelectorAll('.selected');
+        var cards = document.querySelectorAll('.articlecard');
+
+        cards.forEach(function (card) {
+            var cardDetails = card.querySelector('.Details').innerHTML;
+            var showCard = true;
+
+            selectedFilters.forEach(function (filter) {
+                var filterName = filter.innerHTML;
+                if (cardDetails.indexOf(filterName) === -1) {
+                    showCard = false;
+                }
+            });
+
+            card.style.display = showCard ? 'inline-block' : 'none';
+        });
+    }
+}

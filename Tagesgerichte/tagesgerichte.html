@@ -5,10 +5,6 @@
 		<script src="script.js"></script>
 	</head>
 	<body>
-		<h1 id="gerichte">
-			Tagesgerichte
-		</h1>
-
 		<div class="day_selection">
 			<hr class="rounded" width="30%">
 			<div class="day_backwards" onclick="day_backwards(event)">&#9664;</div>
@@ -16,6 +12,17 @@
 			<div class="day_forwards" onclick="day_forwards(event)">&#9654;</div>
 			<hr class="rounded" width="30%">
 		</div>
+
+		<div class="dropdown">
+	        <button onclick="toggleDropdown()" class="dropdown-btn">Filter</button>
+	        <div id="filter-dropdown" class="dropdown-content">
+	        	<button onclick="toggleFilter('alles')" class="dropdown-btn">Alles</button>
+	        	<button onclick="toggleFilter('Vegetarisch')" class="dropdown-btn" id="filter-Vegetarisch">Vegetarisch</button>
+	            <button onclick="toggleFilter('Vegan')" class="dropdown-btn" id="filter-Vegan">Vegan</button>
+	            <button onclick="toggleFilter('Laktosefrei')" class="dropdown-btn" id="filter-Laktosefrei">Laktosefrei</button>
+	            <button onclick="toggleFilter('Glutenfrei')" class="dropdown-btn" id="filter-Glutenfrei">Glutenfrei</button>
+	        </div>
+    	</div>
 
 		<div class="Gerichte">
 			<div class="articlecard">
@@ -75,6 +82,9 @@
 					</span>
 				</div>
 				<details class="Details">
+					Laktosefrei<br>
+					Vegetarisch<br>
+					Vegan
 					<div>
 						<table style="margin-left: auto; margin-right: auto;">
 							<tr>
@@ -117,6 +127,7 @@
 					</span>
 				</div>
 				<details class="Details">
+					Vegetarisch
 					<table style="margin-left: auto; margin-right: auto;">
 							<tr>
 								<th>Brennwert</th> <td>...</td>
@@ -157,6 +168,9 @@
 					</span>
 				</div>
 				<details class="Details">
+					Laktosefrei<br>
+					Vegetarisch<br>
+					Vegan
 					<table style="margin-left: auto; margin-right: auto;">
 							<tr>
 								<th>Brennwert</th> <td>...</td>
@@ -197,6 +211,7 @@
 					</span>
 				</div>
 				<details class="Details">
+					Laktosefrei
 					<table style="margin-left: auto; margin-right: auto;">
 							<tr>
 								<th>Brennwert</th> <td>...</td>
@@ -237,6 +252,7 @@
 					</span>
 				</div>
 				<details class="Details">
+
 					<div>
 						<table style="margin-left: auto; margin-right: auto;">
 							<tr>

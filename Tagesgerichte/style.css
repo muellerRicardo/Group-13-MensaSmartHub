@@ -1,104 +1,139 @@
-			.Gerichte {
-				margin: auto;
-				display: flex;
-				flex-direction: row;
-				flex-wrap: wrap;
-				justify-content: start;
-				align-items: left;
-				align-content: left;
-			}
+.dropdown {
+    margin: 10px;
+    position: relative;
+    display: inline-block;
+}
 
-			.Gerichte > div {
-				background-color: white;
-				padding: 40px;
-			}
+/* Stil für die Filter-Buttons im Dropdown-Menü */
+.dropdown-btn {
+    padding: 8px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
 
-			.Details {
-				font-family: Arial;
-				color: black;
-				background-color: white;
-				font-size: 20px;
-				opacity: 1;
-				z-index: 1;
-			}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
 
-			.articlecard {
-				flex: 1 1 1rem;
-				position: relative;
-				text-align: center;
-				background-color: white;
-				height: 100%;
-				width: 100%:
-				max-height: 20%;
-				min-height: 15%;
-				max-width: 40%;
-				min-width: 25%;
-			}
+.dropdown-content .dropdown-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+}
 
-			.articlecard img {
-				width: 100%;
-				height: 300px;
-				object-fit: cover;
-			}
+.dropdown-content .dropdown-btn:hover {
+    background-color: #ddd;
+}
 
-			.foodname {
-				font-family: Arial;
-				color: black;
-				font-size: 25px;
-				text-align: center;
-			}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
-			.description {
-				font-family: Arial;
-				color: black;
-				font-size: 20px;
-				text-align: left;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-			}
+.dropdown-content .dropdown-btn.selected {
+    background-color: #4CAF50; /* Green color for active state */
+    color: white;
+}
 
-			h1 {
-				font-family: Arial;
-				color: black;
-				font-size: 40px;
-				text-align: center;
-			}
+.Gerichte {
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: start;
+	align-items: left;
+	align-content: left;
+}
 
-			.day_selection{
-                margin: 30px;
-                margin-top: 120px;
-                margin-bottom: 120px;
-                display: flex;
-                justify-content: space-around;
-                flex-grow: 1;
-                font-size: 20px;
-            }
-            hr.rounded {
-                border-top: 8px solid #bbb;
-                border-radius: 5px;
-            }
+.Gerichte > div {
+	background-color: white;
+	padding: 40px;
+}
 
-            .day_backwards{
-                margin: 0 15px;
-            }
+.Details {
+	font-family: Arial;
+	color: black;
+	background-color: white;
+	font-size: 20px;
+	opacity: 1;
+	z-index: 1;
+}
 
-            .day_backwards:hover{
-                cursor: pointer;
-                transform: scale(1.5);
-            }
+.articlecard {
+	margin: 10px;
+    padding: 10px;
+    width: 300px;
+    display: inline-block;
+}
 
-            .day_forwards{
-                margin: 0 15px;
-            }
+.articlecard img {
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
+}
 
-            .day_forwards:hover{
-                cursor: pointer;
-                transform: scale(1.5);
-            }
-			
-			table, th, td {
-				border: 1px solid black;
-				border-collapse: collapse;
-				text-align: left;
-			}
+.foodname {
+	font-family: Arial;
+	color: black;
+	font-size: 25px;
+	text-align: center;
+}
+
+.description {
+	font-family: Arial;
+	color: black;
+	font-size: 20px;
+	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.day_selection{
+    margin: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+    font-size: 20px;
+}
+hr.rounded {
+    border-top: 8px solid #bbb;
+    border-radius: 5px;
+}
+
+.day_backwards{
+    margin: 0 15px;
+}
+
+.day_backwards:hover{
+    cursor: pointer;
+    transform: scale(1.5);
+}
+
+.day_forwards{
+    margin: 0 15px;
+}
+
+.day_forwards:hover{
+    cursor: pointer;
+    transform: scale(1.5);
+}
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: left;
+}
