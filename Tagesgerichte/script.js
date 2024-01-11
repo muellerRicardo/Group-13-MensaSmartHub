@@ -6,19 +6,23 @@ let counter = 0;
 
 
 function day_backwards(input) {
-    counter -= 1;
-    document.getElementById("day").textContent = days[counter];
-    document.getElementById("meal_1").src = meal_1[counter];
-	document.getElementById("preis_1").textContent = preis_1[counter];
-	updateDetails(input);
+	if(counter > 0){
+		counter -= 1;
+		document.getElementById("day").textContent = days[counter];
+		document.getElementById("meal_1").src = meal_1[counter];
+		document.getElementById("preis_1").textContent = preis_1[counter];
+		updateDetails(input);
+	}
 }
 
 function day_forwards(input) {
-    counter += 1;
-    document.getElementById("day").textContent = days[counter];
-    document.getElementById("meal_1").src = meal_1[counter];
-	document.getElementById("preis_1").textContent = preis_1[counter];
-	updateDetails(input);
+	if(counter < (days.length - 1)){ 
+		counter += 1;
+		document.getElementById("day").textContent = days[counter];
+		document.getElementById("meal_1").src = meal_1[counter];
+		document.getElementById("preis_1").textContent = preis_1[counter];
+		updateDetails(input);
+	}
 }
 
 function updateDetails(input){
