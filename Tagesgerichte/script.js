@@ -1,44 +1,44 @@
-var days	= ["Montag, 01.01.2024" , "Dienstag, 02.01.2024"   , "Mittwoch, 03.01.2024"];
-var meal_1	= ["Essen1_1.jpg" , "Essen1_2.jpg"   , "Essen1_3.jpg"];
+var days = ["Montag, 01.01.2024", "Dienstag, 02.01.2024", "Mittwoch, 03.01.2024"];
+var meal_1 = ["Essen1_1.jpg", "Essen1_2.jpg", "Essen1_3.jpg"];
 var details_1 = [["209kcal/876kJ", "7,9g", "26,5g", "0,7g", "7,0g", "0,8g", "1,4g"], ["938kcal/3927kJ", "43,8g", "93,8g", "3,9g", "37,8g", "5,3g", "7,7g"], ["581kcal/2430,9kJ", "20g", "48g", "0g", "51g", "1g", "3,4g"]];
 var preis_1 = ["4,00€", "3,50€", "6,00€"];
 let counter = 0;
 
 
 function day_backwards(input) {
-	if(counter > 0){
-		counter -= 1;
-		document.getElementById("day").textContent = days[counter];
-		document.getElementById("meal_1").src = meal_1[counter];
-		document.getElementById("preis_1").textContent = preis_1[counter];
-		updateDetails(input);
-	}
+    if (counter > 0) {
+        counter -= 1;
+        document.getElementById("day").textContent = days[counter];
+        document.getElementById("meal_1").src = meal_1[counter];
+        document.getElementById("preis_1").textContent = preis_1[counter];
+        updateDetails(input);
+    }
 }
 
 function day_forwards(input) {
-	if(counter < (days.length - 1)){ 
-		counter += 1;
-		document.getElementById("day").textContent = days[counter];
-		document.getElementById("meal_1").src = meal_1[counter];
-		document.getElementById("preis_1").textContent = preis_1[counter];
-		updateDetails(input);
-	}
+    if (counter < (days.length - 1)) {
+        counter += 1;
+        document.getElementById("day").textContent = days[counter];
+        document.getElementById("meal_1").src = meal_1[counter];
+        document.getElementById("preis_1").textContent = preis_1[counter];
+        updateDetails(input);
+    }
 }
 
-function updateDetails(input){
-	document.getElementById("brennwert_1").textContent = details_1[counter][0];
-	document.getElementById("fett_1").textContent = details_1[counter][1];
-	document.getElementById("kohlenhydrate_1").textContent = details_1[counter][2];
-	document.getElementById("zucker_1").textContent = details_1[counter][3];
-	document.getElementById("eiweiß_1").textContent = details_1[counter][4];
-	document.getElementById("salz_1").textContent = details_1[counter][5];
-	document.getElementById("ballaststoffe_1").textContent = details_1[counter][6];
+function updateDetails(input) {
+    document.getElementById("brennwert_1").textContent = details_1[counter][0];
+    document.getElementById("fett_1").textContent = details_1[counter][1];
+    document.getElementById("kohlenhydrate_1").textContent = details_1[counter][2];
+    document.getElementById("zucker_1").textContent = details_1[counter][3];
+    document.getElementById("eiweiß_1").textContent = details_1[counter][4];
+    document.getElementById("salz_1").textContent = details_1[counter][5];
+    document.getElementById("ballaststoffe_1").textContent = details_1[counter][6];
 }
 
 function toggleDropdown() {
-            var dropdown = document.getElementById('filter-dropdown');
-            dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
-        }
+    var dropdown = document.getElementById('filter-dropdown');
+    dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+}
 
 function toggleFilter(filter) {
     var filterButton = document.getElementById('filter-' + filter);
@@ -76,5 +76,79 @@ function toggleFilter(filter) {
 
             card.style.display = showCard ? 'inline-block' : 'none';
         });
+    }
+}
+
+/* Database */
+var loginname = 'admin'
+var loginpass = 'admin'
+
+var request = new XMLHttpRequest();
+
+request.onreadystatechange = function () {
+    // console.log("onreadystatechange: " + request.readyState + ", " +  request.status);
+    // console.log(request.responseText);
+    if (request.readyState == 4) {
+        if (request.status == 200) {
+            var response = JSON.parse(request.responseText);
+            handlers[response._id](response);
+        }
+        if (request.status == 404) {
+            console.log("not found: " + request.responseText);
+        }
+    }
+};
+
+function get(variable) {
+    // console.log("get " + variable);
+    request.open("GET", dburl + variable, false);
+    request.setRequestHeader("Authorization", "Basic " + btoa(loginname + ":" + loginpass));
+    request.send();
+}
+
+function update() {
+    for (var name in handlers) {
+        // console.log("updating " + name);
+        get(name);
+    }
+    toggleNFCFilter();
+}
+
+// request updates at a fixed interval (ms)
+var intervalID = setInterval(update, 1000);
+
+///////////////////////////////////////////////////////////////////////////////
+// your code below
+
+var dbname = "gmci";
+var dburl = "http://127.0.0.1:5984/" + dbname + "/";
+var handlers = {
+    "customer": updateCustomer,
+    // add further handlers here
+}
+var latestName = "None";
+var currentName;
+var currentFilter;
+
+function updateCustomer(response) {
+    currentName = response.name;
+    currentFilter = response.spec;
+}
+
+function toggleNFCFilter() {
+    console.log("Hier!");
+    console.log("CurrentName: " + currentName);
+    console.log("LatestName: " + latestName);
+    //Detect name change
+    if (latestName !== currentName) {
+        latestName = currentName;
+        if (currentName !== "None") {
+            toggleFilter("alles");
+            if (currentFilter && currentFilter.length > 0) {
+                currentFilter.forEach(toggleFilter);
+            }
+        } else {
+            toggleFilter("alles");
+        }
     }
 }

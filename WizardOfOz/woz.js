@@ -119,35 +119,13 @@ function createDB() {
 var dbname = "gmci";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
-    "animal" : setAnimal,
-    "counter" : stepCounter,
-    "showCounter" : showCounter,
-    "mytext" : mytext,
+	"customer": setCustomer,
     // add further handlers here
 };
 
-function setAnimal(response) {
-    var src = getCheckedRadio("animalImage");
-    var width = parseInt(document.getElementById("animalWidth").value);
-    // console.log(src);
-    // console.log(width);
-    put(response, {"src" : src, "width" : width});
-}
-
-function stepCounter(response) {
-    var value = response.value ? response.value : 0;
-    // console.log(value);
-    put(response, {"value" : value + 1});
-}
-
-function showCounter(response) {
-    var checked = document.getElementById("showCounter").checked;
-    // console.log(checked);
-    put(response, {"checked" : checked});
-}
-
-function mytext(response) {
-    var value = document.getElementById("mytext").value;
-//  console.log("mytext::value = " + value);
-    put(response, {"value" : value});
+function setCustomer(response) {
+	var name = getCheckedRadio("customer");
+	var specList = document.getElementById(name+":");
+	var spec = Array.from(specList.children).map(li => li.textContent);
+	put(response, {"name" : name, "spec" : spec});
 }
