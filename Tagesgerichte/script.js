@@ -64,7 +64,7 @@ function toggleFilter(filter) {
         var cards = document.querySelectorAll('.articlecard');
 
         cards.forEach(function (card) {
-            var cardDetails = card.querySelector('.Details').innerHTML;
+            var cardDetails = card.querySelector('.filter').innerHTML;
             var showCard = true;
 
             selectedFilters.forEach(function (filter) {
