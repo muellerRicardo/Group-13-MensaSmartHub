@@ -5,320 +5,634 @@
 		<script src="script.js"></script>
 	</head>
 	<body>
-		<header>
-			<div class="header-left">
-				<div class="day_selection">
-					<div class="day_backwards" onclick="day_backwards(event)">&#9664;</div>
-					<div class="day" id="day">Montag 01.01.2024</div>
-					<div class="day_forwards" onclick="day_forwards(event)">&#9654;</div>
-				</div>
-				<div class="language_selection">
-					<div class="dropdown">
-		        		<button onclick="toggleDropdown()" class="dropdown-btn">Deutsch</button>
-		        		<div id="filter-dropdown" class="dropdown-content">
-		        			<button class="dropdown-btn-d">Deutsch</button>
-				        	<button class="dropdown-btn">English</button>
-				            <button class="dropdown-btn">Nur Bilder/Only Pictures</button>
-		        		</div>
-	    			</div>
-	    		</div>
-    		</div>
-	    </header>
-		
+		<div class="container">
+			<div class="firstPart" id="normalWindow">
+				<header>
+					<div class="header-left">
+						<div class="day_selection">
+							<div class="day_backwards" onclick="day_backwards(event)">&#9664;</div>
+							<div class="day" id="day">Montag 01.01.2024</div>
+							<div class="day_forwards" onclick="day_forwards(event)">&#9654;</div>
+						</div>
+						<div class="language_selection">
+							<div class="dropdown">
+								<button onclick="toggleSplitscreen()" class="dropdown-btn">Deutsch</button> 
+								<!-- //onclick="toggleDropdownLanguages()" -->
+								<div id="language-dropdown" class="dropdown-content">
+									<button class="dropdown-btn-d">Deutsch</button>
+									<button class="dropdown-btn">English</button>
+									<button class="dropdown-btn">Nur Bilder/Only Pictures</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</header>
+				
 
-		<div class="dropdown">
-	        <button onclick="toggleDropdown()" class="dropdown-btn">Filter</button>
-	        <div id="filter-dropdown" class="dropdown-content">
-	        	<button onclick="toggleFilter('alles')" class="dropdown-btn">Alles</button>
-	        	<button onclick="toggleFilter('Vegetarisch')" class="dropdown-btn" id="filter-Vegetarisch">Vegetarisch</button>
-	            <button onclick="toggleFilter('Vegan')" class="dropdown-btn" id="filter-Vegan">Vegan</button>
-	            <button onclick="toggleFilter('Laktosefrei')" class="dropdown-btn" id="filter-Laktosefrei">Laktosefrei</button>
-	            <button onclick="toggleFilter('Glutenfrei')" class="dropdown-btn" id="filter-Glutenfrei">Glutenfrei</button>
-	        </div>
-    	</div>
+				<div class="dropdown">
+					<button onclick="toggleDropdown()" class="dropdown-btn">Filter</button>
+					<div id="filter-dropdown" class="dropdown-content">
+						<button onclick="toggleFilter('alles')" class="dropdown-btn">Alles</button>
+						<button onclick="toggleFilter('Vegetarisch')" class="dropdown-btn" id="filter-Vegetarisch">Vegetarisch</button>
+						<button onclick="toggleFilter('Vegan')" class="dropdown-btn" id="filter-Vegan">Vegan</button>
+						<button onclick="toggleFilter('Laktosefrei')" class="dropdown-btn" id="filter-Laktosefrei">Laktosefrei</button>
+						<button onclick="toggleFilter('Glutenfrei')" class="dropdown-btn" id="filter-Glutenfrei">Glutenfrei</button>
+					</div>
+				</div>
 
-		<div class="Gerichte">
-			<div class="aufgang-a">
-				<div class="aufgang"> Aufgang A</div>
-            	<div class="articlecard">
-					<div class="foodname">
-						Essen 1
-						<span id="preis_1" style="float:right;">
-							4,00€
-						</span>
+				<div class="Gerichte" id="gerichte">
+					<div class="aufgang-a">
+						<div class="aufgang"> Aufgang A</div>
+						<div class="articlecard">
+							<div class="foodname">
+								Essen 1
+								<span id="preis_1" style="float:right;">
+									4,00€
+								</span>
+							</div>
+							<img src="Essen1_1.jpg" id="meal_1">
+							<div class="filter">
+								-
+							</div>
+							<div class="piktogramme">
+								<img src="fleisch.png" width="50">
+							</div>
+							<details class="Details">
+								<div>
+									<table style="margin-left: auto; margin-right: auto;">
+										<tr>
+											<th>Brennwert</th> <td id="brennwert_1">209kcal/876kJ</td>
+										</tr>
+										<tr>
+											<th>Fett</th> <td id="fett_1">7,9g</td>
+										</tr>
+										<tr>
+											<th>Kohlenhydrate</th> <td id="kohlenhydrate_1">26,5g</td>
+										</tr>
+										<tr>
+											<th>-davon Zucker</th> <td id="zucker_1">0,7g</td>
+										</tr>
+										<tr>
+											<th>Eiweiß</th> <td id="eiweiß_1">7,0g</td>
+										</tr>
+										<tr>
+											<th>Salz</th> <td id="salz_1">0,8g</td>
+										</tr>
+										<tr>
+											<th>Ballaststoffe</th> <td id="ballaststoffe_1">1,4g</td>
+										</tr>
+									</table>
+								<div/>
+							</details>
+						</div>
+						<div class="articlecard">
+							<div class="foodname">
+								Essen 4
+								<span style="float:right;">
+									10,00€
+								</span>
+								<img src="Salat.jpg" id="meal_4";>
+							</div>
+							<div class="filter">
+								Vegetarisch, Vegan
+							</div>
+							<div class="piktogramme">
+								<img src="vegetarisch.png" width="50">
+								<div class="spacer"> </div>
+								<img src="vegan.png" width="55">
+							</div>
+							<details class="Details">
+								<table style="margin-left: auto; margin-right: auto;">
+										<tr>
+											<th>Brennwert</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Fett</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Kohlenhydrate</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>-davon Zucker</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Eiweiß</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Salz</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Ballaststoffe</th> <td>...</td>
+										</tr>
+									</table>
+							</details>
+						</div>
 					</div>
-					<img src="Essen1_1.jpg" id="meal_1">
-					<div class="filter">
-						-
+					<div class="aufgang-b"> 
+						<div class="aufgang"> Aufgang B</div>
+						<div class="articlecard">
+							<div class="foodname">
+								Essen 2
+								<span style="float:right;">
+									4,99€
+								</span>
+							<img src="Pasta.jpg" id="meal_2";>
+							</div>
+							<div class="filter">
+								Laktosefrei, Vegetarisch, Vegan
+							</div>
+							<div class="piktogramme">
+								<img src="vegetarisch.png" width="50">
+								<div class="spacer"> </div>
+								<img src="vegan.png" width="55">
+								<div class="spacer"> </div>
+								<img src="laktosefrei.png" width="50">
+							</div>
+							<details class="Details">
+								<div>
+									<table style="margin-left: auto; margin-right: auto;">
+										<tr>
+											<th>Brennwert</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Fett</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Kohlenhydrate</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>-davon Zucker</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Eiweiß</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Salz</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Ballaststoffe</th> <td>...</td>
+										</tr>
+									</table>
+								<div/>
+							</details>
+						</div>
+						<div class="articlecard">
+							<div class="foodname">
+								Essen 5
+								<span style="float:right;">
+									2,99€
+								</span>
+							<img src="Schnitzel_mit_Pommes.jpg" id="meal_5";>
+							</div>
+							<div class="filter">
+								Laktosefrei
+							</div>
+							<div class="piktogramme">
+								<img src="laktosefrei.png" width="50">
+							</div>
+							<details class="Details">
+								<table style="margin-left: auto; margin-right: auto;">
+										<tr>
+											<th>Brennwert</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Fett</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Kohlenhydrate</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>-davon Zucker</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Eiweiß</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Salz</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Ballaststoffe</th> <td>...</td>
+										</tr>
+									</table>
+							</details>
+						</div>
 					</div>
-					<div class="piktogramme">
-						<img src="fleisch.png" width="50">
+					<div class="aufgang-c">
+						<div class="aufgang"> Aufgang C</div>
+						<div class="articlecard">
+							<div class="foodname">
+								Essen 3
+								<span style="float:right;">
+									1,90€
+								</span>
+							<img src="Pizza.jpg" id="meal_3";>
+							</div>
+							<div class="filter">
+								Vegetarisch
+							</div>
+							<div class="piktogramme">
+								<img src="vegetarisch.png" width="50">
+							</div>
+							<details class="Details">
+								<table style="margin-left: auto; margin-right: auto;">
+										<tr>
+											<th>Brennwert</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Fett</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Kohlenhydrate</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>-davon Zucker</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Eiweiß</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Salz</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Ballaststoffe</th> <td>...</td>
+										</tr>
+									</table>
+							</details>
+						</div>
+						<div class="articlecard">
+							<div class="foodname">
+								Essen 6
+								<span style="float:right;">
+									5,30€
+								</span>
+							<img src="Hamburger_mit_Pommes.jpg" id="meal_6";>
+							</div>
+							<div class="filter">
+								-
+							</div>
+							<div class="piktogramme">
+								<img src="fleisch.png" width="50">
+							</div>
+							<details class="Details">
+								<div>
+									<table style="margin-left: auto; margin-right: auto;">
+										<tr>
+											<th>Brennwert</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Fett</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Kohlenhydrate</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>-davon Zucker</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Eiweiß</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Salz</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Ballaststoffe</th> <td>...</td>
+										</tr>
+									</table>
+								<div/>
+							</details>
+						</div>
 					</div>
-					<details class="Details">
-						<div>
-							<table style="margin-left: auto; margin-right: auto;">
-								<tr>
-									<th>Brennwert</th> <td id="brennwert_1">209kcal/876kJ</td>
-								</tr>
-								<tr>
-									<th>Fett</th> <td id="fett_1">7,9g</td>
-								</tr>
-								<tr>
-									<th>Kohlenhydrate</th> <td id="kohlenhydrate_1">26,5g</td>
-								</tr>
-								<tr>
-									<th>-davon Zucker</th> <td id="zucker_1">0,7g</td>
-								</tr>
-								<tr>
-									<th>Eiweiß</th> <td id="eiweiß_1">7,0g</td>
-								</tr>
-								<tr>
-									<th>Salz</th> <td id="salz_1">0,8g</td>
-								</tr>
-								<tr>
-									<th>Ballaststoffe</th> <td id="ballaststoffe_1">1,4g</td>
-								</tr>
-							</table>
-						<div/>
-					</details>
 				</div>
-				<div class="articlecard">
-					<div class="foodname">
-						Essen 4
-						<span style="float:right;">
-							10,00€
-						</span>
-						<img src="Salat.jpg" id="meal_4";>
-					</div>
-					<div class="filter">
-						Vegetarisch, Vegan
-					</div>
-					<div class="piktogramme">
-						<img src="vegetarisch.png" width="50">
-						<div class="spacer"> </div>
-						<img src="vegan.png" width="55">
-					</div>
-					<details class="Details">
-						<table style="margin-left: auto; margin-right: auto;">
-								<tr>
-									<th>Brennwert</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Fett</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Kohlenhydrate</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>-davon Zucker</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Eiweiß</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Salz</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Ballaststoffe</th> <td>...</td>
-								</tr>
-							</table>
-					</details>
+
+				<div class="legende">
+					<table style="margin-left: auto; margin-right: auto;">
+						<tr>
+							<th><img src="vegetarisch.png" width="50"></th> <td>Vegetarisch</td>
+						</tr>
+						<tr>
+							<th><img src="vegan.png" width="55"></th> <td>Vegan</td>
+						</tr>
+						<tr>
+							<th><img src="laktosefrei.png" width="50"></th> <td>Laktosefrei</td>
+						</tr>
+						<tr>
+							<th><img src="fleisch.png" width="50"></th> <td>Fleisch</td>
+						</tr>
+					</table>
 				</div>
-        	</div>
-        	<div class="aufgang-b"> 
-        		<div class="aufgang"> Aufgang B</div>
-            	<div class="articlecard">
-					<div class="foodname">
-						Essen 2
-						<span style="float:right;">
-							4,99€
-						</span>
-					<img src="Pasta.jpg" id="meal_2";>
+			</div>
+			
+			<!-- Splitscreen-Modus -->
+			<div class="secondPart" id="secondWindow">
+				<header>
+					<div class="header-left">
+						<div class="day_selection">
+							<div class="day_backwards" onclick="day_backwards_split(event)">&#9664;</div>
+							<div class="day" id="day_split">Montag 01.01.2024</div>
+							<div class="day_forwards" onclick="day_forwards_split(event)">&#9654;</div>
+						</div>
+						<div class="language_selection">
+							<div class="dropdown">
+								<button onclick="toggleDropdownLanguagesSplit()" class="dropdown-btn">Deutsch</button>
+								<div id="language-dropdown-split" class="dropdown-content">
+									<button class="dropdown-btn-d">Deutsch</button>
+									<button class="dropdown-btn">English</button>
+									<button class="dropdown-btn">Nur Bilder/Only Pictures</button>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="filter">
-						Laktosefrei, Vegetarisch, Vegan
+				</header>
+				
+
+				<div class="dropdown">
+					<button class="dropdown-btn" style="visibility: hidden;" >Filter</button>
+					<div id="filter-dropdown-split" class="dropdown-content">
+						
 					</div>
-					<div class="piktogramme">
-						<img src="vegetarisch.png" width="50">
-						<div class="spacer"> </div>
-						<img src="vegan.png" width="55">
-						<div class="spacer"> </div>
-						<img src="laktosefrei.png" width="50">
-					</div>
-					<details class="Details">
-						<div>
-							<table style="margin-left: auto; margin-right: auto;">
-								<tr>
-									<th>Brennwert</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Fett</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Kohlenhydrate</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>-davon Zucker</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Eiweiß</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Salz</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Ballaststoffe</th> <td>...</td>
-								</tr>
-							</table>
-						<div/>
-					</details>
 				</div>
-				<div class="articlecard">
-					<div class="foodname">
-						Essen 5
-						<span style="float:right;">
-							2,99€
-						</span>
-					<img src="Schnitzel_mit_Pommes.jpg" id="meal_5";>
+
+				<div class="Gerichte">
+					<div class="aufgang-a">
+						<div class="aufgang"> Aufgang A</div>
+						<div class="articlecard">
+							<div class="foodname">
+								Essen 1
+								<span id="preis_1_split" style="float:right;">
+									4,00€
+								</span>
+							</div>
+							<img src="Essen1_1.jpg" id="meal_1_split">
+							<div class="filter">
+								-
+							</div>
+							<div class="piktogramme">
+								<img src="fleisch.png" width="50">
+							</div>
+							<details class="Details">
+								<div>
+									<table style="margin-left: auto; margin-right: auto;">
+										<tr>
+											<th>Brennwert</th> <td id="brennwert_1">209kcal/876kJ</td>
+										</tr>
+										<tr>
+											<th>Fett</th> <td id="fett_1">7,9g</td>
+										</tr>
+										<tr>
+											<th>Kohlenhydrate</th> <td id="kohlenhydrate_1">26,5g</td>
+										</tr>
+										<tr>
+											<th>-davon Zucker</th> <td id="zucker_1">0,7g</td>
+										</tr>
+										<tr>
+											<th>Eiweiß</th> <td id="eiweiß_1">7,0g</td>
+										</tr>
+										<tr>
+											<th>Salz</th> <td id="salz_1">0,8g</td>
+										</tr>
+										<tr>
+											<th>Ballaststoffe</th> <td id="ballaststoffe_1">1,4g</td>
+										</tr>
+									</table>
+								<div/>
+							</details>
+						</div>
+						<div class="articlecard">
+							<div class="foodname">
+								Essen 4
+								<span style="float:right;">
+									10,00€
+								</span>
+								<img src="Salat.jpg" id="meal_4_split";>
+							</div>
+							<div class="filter">
+								Vegetarisch, Vegan
+							</div>
+							<div class="piktogramme">
+								<img src="vegetarisch.png" width="50">
+								<div class="spacer"> </div>
+								<img src="vegan.png" width="55">
+							</div>
+							<details class="Details">
+								<table style="margin-left: auto; margin-right: auto;">
+										<tr>
+											<th>Brennwert</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Fett</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Kohlenhydrate</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>-davon Zucker</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Eiweiß</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Salz</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Ballaststoffe</th> <td>...</td>
+										</tr>
+									</table>
+							</details>
+						</div>
 					</div>
-					<div class="filter">
-						Laktosefrei
+					<div class="aufgang-b"> 
+						<div class="aufgang"> Aufgang B</div>
+						<div class="articlecard">
+							<div class="foodname">
+								Essen 2
+								<span style="float:right;">
+									4,99€
+								</span>
+							<img src="Pasta.jpg" id="meal_2_split";>
+							</div>
+							<div class="filter">
+								Laktosefrei, Vegetarisch, Vegan
+							</div>
+							<div class="piktogramme">
+								<img src="vegetarisch.png" width="50">
+								<div class="spacer"> </div>
+								<img src="vegan.png" width="55">
+								<div class="spacer"> </div>
+								<img src="laktosefrei.png" width="50">
+							</div>
+							<details class="Details">
+								<div>
+									<table style="margin-left: auto; margin-right: auto;">
+										<tr>
+											<th>Brennwert</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Fett</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Kohlenhydrate</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>-davon Zucker</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Eiweiß</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Salz</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Ballaststoffe</th> <td>...</td>
+										</tr>
+									</table>
+								<div/>
+							</details>
+						</div>
+						<div class="articlecard">
+							<div class="foodname">
+								Essen 5
+								<span style="float:right;">
+									2,99€
+								</span>
+							<img src="Schnitzel_mit_Pommes.jpg" id="meal_5_split";>
+							</div>
+							<div class="filter">
+								Laktosefrei
+							</div>
+							<div class="piktogramme">
+								<img src="laktosefrei.png" width="50">
+							</div>
+							<details class="Details">
+								<table style="margin-left: auto; margin-right: auto;">
+										<tr>
+											<th>Brennwert</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Fett</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Kohlenhydrate</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>-davon Zucker</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Eiweiß</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Salz</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Ballaststoffe</th> <td>...</td>
+										</tr>
+									</table>
+							</details>
+						</div>
 					</div>
-					<div class="piktogramme">
-						<img src="laktosefrei.png" width="50">
+					<div class="aufgang-c">
+						<div class="aufgang"> Aufgang C</div>
+						<div class="articlecard">
+							<div class="foodname">
+								Essen 3
+								<span style="float:right;">
+									1,90€
+								</span>
+							<img src="Pizza.jpg" id="meal_3_split";>
+							</div>
+							<div class="filter">
+								Vegetarisch
+							</div>
+							<div class="piktogramme">
+								<img src="vegetarisch.png" width="50">
+							</div>
+							<details class="Details">
+								<table style="margin-left: auto; margin-right: auto;">
+										<tr>
+											<th>Brennwert</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Fett</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Kohlenhydrate</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>-davon Zucker</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Eiweiß</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Salz</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Ballaststoffe</th> <td>...</td>
+										</tr>
+									</table>
+							</details>
+						</div>
+						<div class="articlecard">
+							<div class="foodname">
+								Essen 6
+								<span style="float:right;">
+									5,30€
+								</span>
+							<img src="Hamburger_mit_Pommes.jpg" id="meal_6_split";>
+							</div>
+							<div class="filter">
+								-
+							</div>
+							<div class="piktogramme">
+								<img src="fleisch.png" width="50">
+							</div>
+							<details class="Details">
+								<div>
+									<table style="margin-left: auto; margin-right: auto;">
+										<tr>
+											<th>Brennwert</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Fett</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Kohlenhydrate</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>-davon Zucker</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Eiweiß</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Salz</th> <td>...</td>
+										</tr>
+										<tr>
+											<th>Ballaststoffe</th> <td>...</td>
+										</tr>
+									</table>
+								<div/>
+							</details>
+						</div>
 					</div>
-					<details class="Details">
-						<table style="margin-left: auto; margin-right: auto;">
-								<tr>
-									<th>Brennwert</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Fett</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Kohlenhydrate</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>-davon Zucker</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Eiweiß</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Salz</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Ballaststoffe</th> <td>...</td>
-								</tr>
-							</table>
-					</details>
 				</div>
-        	</div>
-        	<div class="aufgang-c">
-        		<div class="aufgang"> Aufgang C</div>
-            	<div class="articlecard">
-					<div class="foodname">
-						Essen 3
-						<span style="float:right;">
-							1,90€
-						</span>
-					<img src="Pizza.jpg" id="meal_3";>
-					</div>
-					<div class="filter">
-						Vegetarisch
-					</div>
-					<div class="piktogramme">
-						<img src="vegetarisch.png" width="50">
-					</div>
-					<details class="Details">
-						<table style="margin-left: auto; margin-right: auto;">
-								<tr>
-									<th>Brennwert</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Fett</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Kohlenhydrate</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>-davon Zucker</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Eiweiß</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Salz</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Ballaststoffe</th> <td>...</td>
-								</tr>
-							</table>
-					</details>
+
+				<div class="legende">
+					<table style="margin-left: auto; margin-right: auto;">
+						<tr>
+							<th><img src="vegetarisch.png" width="50"></th> <td>Vegetarisch</td>
+						</tr>
+						<tr>
+							<th><img src="vegan.png" width="55"></th> <td>Vegan</td>
+						</tr>
+						<tr>
+							<th><img src="laktosefrei.png" width="50"></th> <td>Laktosefrei</td>
+						</tr>
+						<tr>
+							<th><img src="fleisch.png" width="50"></th> <td>Fleisch</td>
+						</tr>
+					</table>
 				</div>
-				<div class="articlecard">
-					<div class="foodname">
-						Essen 6
-						<span style="float:right;">
-							5,30€
-						</span>
-					<img src="Hamburger_mit_Pommes.jpg" id="meal_6";>
-					</div>
-					<div class="filter">
-						-
-					</div>
-					<div class="piktogramme">
-						<img src="fleisch.png" width="50">
-					</div>
-					<details class="Details">
-						<div>
-							<table style="margin-left: auto; margin-right: auto;">
-								<tr>
-									<th>Brennwert</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Fett</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Kohlenhydrate</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>-davon Zucker</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Eiweiß</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Salz</th> <td>...</td>
-								</tr>
-								<tr>
-									<th>Ballaststoffe</th> <td>...</td>
-								</tr>
-							</table>
-						<div/>
-					</details>
-				</div>
-        	</div>
+			</div>
 		</div>
-
-		<div class="legende">
-							<table style="margin-left: auto; margin-right: auto;">
-								<tr>
-									<th><img src="vegetarisch.png" width="50"></th> <td>Vegetarisch</td>
-								</tr>
-								<tr>
-									<th><img src="vegan.png" width="55"></th> <td>Vegan</td>
-								</tr>
-								<tr>
-									<th><img src="laktosefrei.png" width="50"></th> <td>Laktosefrei</td>
-								</tr>
-								<tr>
-									<th><img src="fleisch.png" width="50"></th> <td>Fleisch</td>
-								</tr>
-							</table>
-						<div/>
-					</details>
-				</div>
-        	</div>
 	</body>
 </html>

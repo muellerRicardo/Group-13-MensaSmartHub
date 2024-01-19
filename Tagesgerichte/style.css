@@ -12,6 +12,25 @@ header {
     padding: 10px;
 }
 
+.container{
+	margin: auto;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+	border-style: solid;
+}
+
+.firstPart{
+	border-style: solid;
+	width: 100%;
+}
+
+.secondPart{
+	display: none;
+	width: 66%;
+	border-style: solid;
+}
+
 .header-left {
     display: flex;
     align-items: center;
@@ -110,10 +129,14 @@ header {
 
 .Gerichte {
 	margin: auto;
-    display: flex;
-    justify-content: space-around;
-    width: 100%; 
-
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: center;
+	align-content: center;
+    width: 100%;
+	border-style: solid;
 }
 
 .Gerichte > div {
