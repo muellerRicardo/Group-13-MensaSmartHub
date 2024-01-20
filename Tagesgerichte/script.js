@@ -26,6 +26,7 @@ var preis_4 = ["4,00€", "3,50€", "6,00€"];
 var preis_5 = ["5,00€", "6,50€", "6,00€"];
 var preis_6 = ["5,00€", "5,50€", "3,50€"];
 let counter = 0;
+let counter_split = 0;
 
 
 function day_backwards(input) {
@@ -54,6 +55,32 @@ function day_backwards(input) {
     }
 }
 
+function day_backwards_split(input) {
+    if (counter_split > 0) {
+        counter_split -= 1;
+        document.getElementById("day_split").textContent = days[counter_split];
+        document.getElementById("meal_1_split").src = meal_1[counter_split];
+        document.getElementById("preis_1_split").textContent = preis_1[counter_split];
+
+        document.getElementById("meal_2_split").src = meal_2[counter_split];
+        document.getElementById("preis_2_split").textContent = preis_2[counter_split];
+
+        document.getElementById("meal_3_split").src = meal_3[counter_split];
+        document.getElementById("preis_3_split").textContent = preis_3[counter_split];
+
+        document.getElementById("meal_4_split").src = meal_4[counter_split];
+        document.getElementById("preis_4_split").textContent = preis_4[counter_split];
+
+        document.getElementById("meal_5_split").src = meal_5[counter_split];
+        document.getElementById("preis_5_split").textContent = preis_5[counter_split];
+
+        document.getElementById("meal_6_split").src = meal_6[counter_split];
+        document.getElementById("preis_6_split").textContent = preis_6[counter_split];
+
+        updateDetails_split(input);
+    }
+}
+
 function day_forwards(input) {
     if (counter < (days.length - 1)) {
         counter += 1;
@@ -78,6 +105,33 @@ function day_forwards(input) {
 
 
         updateDetails(input);
+    }
+}
+
+function day_forwards_split(input) {
+    if (counter_split < (days.length - 1)) {
+        counter_split += 1;
+        document.getElementById("day_split").textContent = days[counter_split];
+        document.getElementById("meal_1_split").src = meal_1[counter_split];
+        document.getElementById("preis_1_split").textContent = preis_1[counter_split];
+
+        document.getElementById("meal_2_split").src = meal_2[counter_split];
+        document.getElementById("preis_2_split").textContent = preis_2[counter_split];
+
+        document.getElementById("meal_3_split").src = meal_3[counter_split];
+        document.getElementById("preis_3_split").textContent = preis_3[counter_split];
+
+        document.getElementById("meal_4_split").src = meal_4[counter_split];
+        document.getElementById("preis_4_split").textContent = preis_4[counter_split];
+
+        document.getElementById("meal_5_split").src = meal_5[counter_split];
+        document.getElementById("preis_5_split").textContent = preis_5[counter_split];
+
+        document.getElementById("meal_6_split").src = meal_6[counter_split];
+        document.getElementById("preis_6_split").textContent = preis_6[counter_split];
+
+
+        updateDetails_split(input);
     }
 }
 
@@ -132,8 +186,74 @@ function updateDetails(input) {
     document.getElementById("ballaststoffe_6").textContent = details_6[counter][6];
 }
 
+function updateDetails_split(input) {
+    document.getElementById("brennwert_1_split").textContent = details_1[counter_split][0];
+    document.getElementById("fett_1_split").textContent = details_1[counter_split][1];
+    document.getElementById("kohlenhydrate_1_split").textContent = details_1[counter_split][2];
+    document.getElementById("zucker_1_split").textContent = details_1[counter_split][3];
+    document.getElementById("eiweiß_1_split").textContent = details_1[counter_split][4];
+    document.getElementById("salz_1_split").textContent = details_1[counter_split][5];
+    document.getElementById("ballaststoffe_1_split").textContent = details_1[counter_split][6];
+
+
+    document.getElementById("brennwert_2_split").textContent = details_2[counter_split][0];
+    document.getElementById("fett_2_split").textContent = details_2[counter_split][1];
+    document.getElementById("kohlenhydrate_2_split").textContent = details_2[counter_split][2];
+    document.getElementById("zucker_2_split").textContent = details_2[counter_split][3];
+    document.getElementById("eiweiß_2_split").textContent = details_2[counter_split][4];
+    document.getElementById("salz_2_split").textContent = details_2[counter_split][5];
+    document.getElementById("ballaststoffe_2_split").textContent = details_2[counter_split][6];
+
+    document.getElementById("brennwert_3_split").textContent = details_3[counter_split][0];
+    document.getElementById("fett_3_split").textContent = details_3[counter_split][1];
+    document.getElementById("kohlenhydrate_3_split").textContent = details_3[counter_split][2];
+    document.getElementById("zucker_3_split").textContent = details_3[counter_split][3];
+    document.getElementById("eiweiß_3_split").textContent = details_3[counter_split][4];
+    document.getElementById("salz_3_split").textContent = details_3[counter_split][5];
+    document.getElementById("ballaststoffe_3_split").textContent = details_3[counter_split][6];
+
+    document.getElementById("brennwert_4_split").textContent = details_4[counter_split][0];
+    document.getElementById("fett_4_split").textContent = details_4[counter_split][1];
+    document.getElementById("kohlenhydrate_4_split").textContent = details_4[counter_split][2];
+    document.getElementById("zucker_4_split").textContent = details_4[counter_split][3];
+    document.getElementById("eiweiß_4_split").textContent = details_4[counter_split][4];
+    document.getElementById("salz_4_split").textContent = details_4[counter_split][5];
+    document.getElementById("ballaststoffe_4_split").textContent = details_4[counter_split][6];
+
+    document.getElementById("brennwert_5_split").textContent = details_5[counter_split][0];
+    document.getElementById("fett_5_split").textContent = details_5[counter_split][1];
+    document.getElementById("kohlenhydrate_5_split").textContent = details_5[counter_split][2];
+    document.getElementById("zucker_5_split").textContent = details_5[counter_split][3];
+    document.getElementById("eiweiß_5_split").textContent = details_5[counter_split][4];
+    document.getElementById("salz_5_split").textContent = details_5[counter_split][5];
+    document.getElementById("ballaststoffe_5_split").textContent = details_5[counter_split][6];
+
+    document.getElementById("brennwert_6_split").textContent = details_6[counter_split][0];
+    document.getElementById("fett_6_split").textContent = details_6[counter_split][1];
+    document.getElementById("kohlenhydrate_6_split").textContent = details_6[counter_split][2];
+    document.getElementById("zucker_6_split").textContent = details_6[counter_split][3];
+    document.getElementById("eiweiß_6_split").textContent = details_6[counter_split][4];
+    document.getElementById("salz_6_split").textContent = details_6[counter_split][5];
+    document.getElementById("ballaststoffe_6_split").textContent = details_6[counter_split][6];
+}
+
 function toggleDropdown() {
     var dropdown = document.getElementById('filter-dropdown');
+    dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+}
+
+function toggleDropdownLanguages() {
+    var dropdown = document.getElementById('language-dropdown');
+    dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+}
+
+function toggleDropdownLanguagesSplit() {
+    var dropdown = document.getElementById('language-dropdown-split');
+    dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+}
+
+function toggleDropdownLanguagesSplit() {
+    var dropdown = document.getElementById('language-dropdown-split');
     dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
 }
 
@@ -207,12 +327,14 @@ function update() {
     for (var name in handlers) {
         // console.log("updating " + name);
         get(name);
+		// get(split);
     }
     toggleNFCFilter();
+	// toggleSplitscreen();
 }
 
 // request updates at a fixed interval (ms)
-var intervalID = setInterval(update, 1000);
+// var intervalID = setInterval(update, 1000);
 
 ///////////////////////////////////////////////////////////////////////////////
 // your code below
@@ -221,16 +343,104 @@ var dbname = "gmci";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
     "customer": updateCustomer,
+	// "split": updateSplit,
     // add further handlers here
 }
 var latestName = "None";
 var currentName;
 var currentFilter;
+var split = false; //muss noch aus der DB gelesen werden!!!
+var timerset = false;
 
 function updateCustomer(response) {
     currentName = response.name;
     currentFilter = response.spec;
 }
+
+function updateCustomer(response) {
+    split = response.split;
+}
+
+function toggleSplitscreen(){
+	console.log("Splitscreen activated");
+	if (split){
+		console.log("reverse split");
+		if (func){
+			console.log("reset timer");
+			stopTimer();
+		}
+		reverseSplit();
+	}else if (!split){
+		console.log("split screen");
+		splitScreen();
+	}
+}
+
+function splitScreen(){
+	split = true;
+	timerstart();
+	var normalWindow = document.getElementById('normalWindow');
+	var gerichte = document.getElementById('gerichte');
+	var secondWindow = document.getElementById('secondWindow');
+	var timer = document.getElementById('timer');
+	normalWindow.style.width = "33.333333333333333333333333333333%";
+	gerichte.style.justifyContent = "center";
+	secondWindow.style.display = "block";
+	timer.textContent = "2:00";
+	timer.style.visibility = "visible";
+}
+
+function reverseSplit(){
+	split = false;
+	var normalWindow = document.getElementById('normalWindow');
+	var gerichte = document.getElementById('gerichte');
+	var secondWindow = document.getElementById('secondWindow');
+	var timer = document.getElementById('timer');
+	normalWindow.style.width = "100%";
+	gerichte.style.justifyContent = "space-evenly";
+	secondWindow.style.display = "none";
+	stopTimer();
+	timer.textContent = "2:00";
+	timer.style.visibility = "hidden";
+}
+
+function splitTimer(){
+	if (split){
+		console.log("reverse split by timer");
+		reverseSplit();
+	}
+}
+
+var func;
+var sec = 0;
+var min = 0;
+
+function timerstart(){
+	func = setInterval( function(){
+		var timer = document.getElementById('timer');
+		if (sec == 0){
+			timer.textContent = "2:00";
+		}else if (sec == 60){
+			timer.textContent = "1:00";
+		}else if (60 - sec%60 < 10){
+			timer.textContent = (1 - parseInt(sec/60, 10)) + ":0" + (60 - sec%60);
+		}else{
+			timer.textContent = (1 - parseInt(sec/60, 10)) + ":" + (60 - sec%60);
+		}
+		
+		if (sec >= 120){
+			splitTimer();
+			stopTimer();
+		}
+		sec++;
+	}, 1000);
+}
+
+function stopTimer() {
+	clearInterval(func);
+	sec = 0;
+}
+
 
 function toggleNFCFilter() {
     console.log("Hier!");
