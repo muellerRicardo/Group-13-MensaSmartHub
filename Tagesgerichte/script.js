@@ -42,7 +42,7 @@ function day_forwards_split(input) {
         document.getElementById("day_split").textContent = days[counter_split];
         document.getElementById("meal_1_split").src = meal_1[counter_split];
         document.getElementById("preis_1_split").textContent = preis_1[counter_split];
-        updateDetails(input);
+        updateDetailsSplit(input);
     }
 }
 
@@ -56,14 +56,14 @@ function updateDetails(input) {
     document.getElementById("ballaststoffe_1").textContent = details_1[counter][6];
 }
 
-function updateDetails(input) {
-    document.getElementById("brennwert_1").textContent = details_1_split[counter_split][0];
-    document.getElementById("fett_1").textContent = details_1_split[counter_split][1];
-    document.getElementById("kohlenhydrate_1").textContent = details_1_split[counter_split][2];
-    document.getElementById("zucker_1").textContent = details_1_split[counter_split][3];
-    document.getElementById("eiweiß_1").textContent = details_1_split[counter_split][4];
-    document.getElementById("salz_1").textContent = details_1_split[counter_split][5];
-    document.getElementById("ballaststoffe_1").textContent = details_1_split[counter_split][6];
+function updateDetailsSplit(input) {
+    document.getElementById("brennwert_1_split").textContent = details_1[counter_split][0];
+    document.getElementById("fett_1_split").textContent = details_1[counter_split][1];
+    document.getElementById("kohlenhydrate_1_split").textContent = details_1[counter_split][2];
+    document.getElementById("zucker_1_split").textContent = details_1[counter_split][3];
+    document.getElementById("eiweiß_1_split").textContent = details_1[counter_split][4];
+    document.getElementById("salz_1_split").textContent = details_1[counter_split][5];
+    document.getElementById("ballaststoffe_1_split").textContent = details_1[counter_split][6];
 }
 
 function toggleDropdown() {
@@ -76,10 +76,10 @@ function toggleDropdownLanguages() {
     dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
 }
 
-function toggleDropdownSplit() {
-    var dropdown = document.getElementById('filter-dropdown-split');
-    dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
-}
+// function toggleDropdownSplit() {
+    // var dropdown = document.getElementById('filter-dropdown-split');
+    // dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+// }
 
 function toggleDropdownLanguagesSplit() {
     var dropdown = document.getElementById('language-dropdown-split');
@@ -178,7 +178,8 @@ var handlers = {
 var latestName = "None";
 var currentName;
 var currentFilter;
-var split = true; //muss noch aus der DB gelesen werden!!!
+var split = false; //muss noch aus der DB gelesen werden!!!
+var timerset = false;
 
 function updateCustomer(response) {
     currentName = response.name;
@@ -192,17 +193,83 @@ function updateCustomer(response) {
 function toggleSplitscreen(){
 	console.log("Splitscreen activated");
 	if (split){
-		var normalWindow = document.getElementById('normalWindow');
-		var gerichte = document.getElementById('gerichte');
-		var secondWindow = document.getElementById('secondWindow');
-		normalWindow.style.width = "33%";
-		normalWindow.style.overflowY = "scroll";
-		normalWindow.style.maxHeight = "100vh"
-		gerichte.style.flexDirection = "row";
-		gerichte.style.justifyContent = "center";
-		secondWindow.style.display = "block";
+		console.log("reverse split");
+		if (func){
+			console.log("reset timer");
+			stopTimer();
+		}
+		reverseSplit();
+	}else if (!split){
+		console.log("split screen");
+		splitScreen();
 	}
 }
+
+function splitScreen(){
+	split = true;
+	timerstart();
+	var normalWindow = document.getElementById('normalWindow');
+	var gerichte = document.getElementById('gerichte');
+	var secondWindow = document.getElementById('secondWindow');
+	var timer = document.getElementById('timer');
+	normalWindow.style.width = "33.333333333333333333333333333333%";
+	gerichte.style.justifyContent = "center";
+	secondWindow.style.display = "block";
+	timer.textContent = "2:00";
+	timer.style.visibility = "visible";
+}
+
+function reverseSplit(){
+	split = false;
+	var normalWindow = document.getElementById('normalWindow');
+	var gerichte = document.getElementById('gerichte');
+	var secondWindow = document.getElementById('secondWindow');
+	var timer = document.getElementById('timer');
+	normalWindow.style.width = "100%";
+	gerichte.style.justifyContent = "space-evenly";
+	secondWindow.style.display = "none";
+	stopTimer();
+	timer.textContent = "2:00";
+	timer.style.visibility = "hidden";
+}
+
+function splitTimer(){
+	if (split){
+		console.log("reverse split by timer");
+		reverseSplit();
+	}
+}
+
+var func;
+var sec = 0;
+var min = 0;
+
+function timerstart(){
+	func = setInterval( function(){
+		var timer = document.getElementById('timer');
+		if (sec == 0){
+			timer.textContent = "2:00";
+		}else if (sec == 60){
+			timer.textContent = "1:00";
+		}else if (60 - sec%60 < 10){
+			timer.textContent = (1 - parseInt(sec/60, 10)) + ":0" + (60 - sec%60);
+		}else{
+			timer.textContent = (1 - parseInt(sec/60, 10)) + ":" + (60 - sec%60);
+		}
+		
+		if (sec >= 120){
+			splitTimer();
+			stopTimer();
+		}
+		sec++;
+	}, 1000);
+}
+
+function stopTimer() {
+	clearInterval(func);
+	sec = 0;
+}
+
 
 function toggleNFCFilter() {
     console.log("Hier!");
