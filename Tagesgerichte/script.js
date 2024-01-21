@@ -386,7 +386,7 @@ function splitScreen(){
 	normalWindow.style.width = "33.333333333333333333333333333333%";
 	gerichte.style.justifyContent = "center";
 	secondWindow.style.display = "block";
-	timer.textContent = "2:00";
+	timer.textContent = "1:00";
 	timer.style.visibility = "visible";
 }
 
@@ -400,7 +400,7 @@ function reverseSplit(){
 	gerichte.style.justifyContent = "space-evenly";
 	secondWindow.style.display = "none";
 	stopTimer();
-	timer.textContent = "2:00";
+	timer.textContent = "1:00";
 	timer.style.visibility = "hidden";
 }
 
@@ -419,8 +419,6 @@ function timerstart(){
 	func = setInterval( function(){
 		var timer = document.getElementById('timer');
 		if (sec == 0){
-			timer.textContent = "2:00";
-		}else if (sec == 60){
 			timer.textContent = "1:00";
 		}else if (60 - sec%60 < 10){
 			timer.textContent = (1 - parseInt(sec/60, 10)) + ":0" + (60 - sec%60);
