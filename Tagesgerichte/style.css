@@ -151,21 +151,24 @@ html { overflow-y: hidden; }
 }
 
 .aufgang-a {
-    background-color: red;
+    background-color: #ed5711;
     align-items: center;
     box-sizing: content-box;
+    border-radius: 5px;
 }
 
 .aufgang-b {
-    background-color: yellow;
+    background-color: #eae000;
     align-items: center;
     box-sizing: content-box;
+    border-radius: 5px;
 }
 
 .aufgang-c {
-    background-color: blue;
+    background-color: #00b1d5;
     align-items: center;
     box-sizing: content-box;
+    border-radius: 5px;
 }
 
 .aufgang {
