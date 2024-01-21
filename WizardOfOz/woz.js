@@ -49,8 +49,8 @@ var loginpass = 'admin'
 
 var request = new XMLHttpRequest();
 
-request.onreadystatechange = function() {
-    console.log("onreadystatechange: " + request.readyState + ", " +  request.status);
+request.onreadystatechange = function () {
+    console.log("onreadystatechange: " + request.readyState + ", " + request.status);
     console.log(request.responseText);
     if (request.readyState == 4) {
         if (request.status == 200) {
@@ -63,10 +63,10 @@ request.onreadystatechange = function() {
                 createDB();
             } else {
                 var url = request.responseURL
-//              console.log(typeof(url));
+                //              console.log(typeof(url));
                 var i = url.lastIndexOf("/", url.length - 1);
                 var name = url.substring(i + 1);
-                handlers[name]({ "_id" : name });
+                handlers[name]({ "_id": name });
             }
         }
     }
@@ -87,8 +87,8 @@ function set(name) {
     console.log("set::name = " + name);
     console.log("set::GET = " + dburl + name);
     request.open("GET", dburl + name, true);
-	request.setRequestHeader("Authorization", "Basic " + btoa(loginname + ":" + loginpass));
-	request.withCredentials = true;
+    request.setRequestHeader("Authorization", "Basic " + btoa(loginname + ":" + loginpass));
+    request.withCredentials = true;
     request.send();
 }
 
@@ -97,19 +97,19 @@ function put(response, message) {
     console.log("put::message = " + message);
     request.open("PUT", dburl + response._id, true);
     request.setRequestHeader("Content-type", "application/json");
-	request.setRequestHeader("Authorization", "Basic " + btoa(loginname + ":" + loginpass));
+    request.setRequestHeader("Authorization", "Basic " + btoa(loginname + ":" + loginpass));
     message["_id"] = response._id;
     if (response._rev) {
         message["_rev"] = response._rev;
     }
     var s = JSON.stringify(message);
-//  console.log("put: " + s);
+    //  console.log("put: " + s);
     request.send(s);
 }
 
 function createDB() {
     request.open("PUT", dburl, true);
-	request.setRequestHeader("Authorization", "Basic " + btoa(loginname + ":" + loginpass));
+    request.setRequestHeader("Authorization", "Basic " + btoa(loginname + ":" + loginpass));
     request.send();
 }
 
@@ -119,13 +119,31 @@ function createDB() {
 var dbname = "gmci";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
-	"customer": setCustomer,
+    "customer": setCustomer,
+    "splitscreen": setSplitScreen,
     // add further handlers here
 };
+var isActive = false;
 
 function setCustomer(response) {
-	var name = getCheckedRadio("customer");
-	var specList = document.getElementById(name);
-	var spec = Array.from(specList.children).map(li => li.textContent);
-	put(response, {"name" : name, "spec" : spec});
+    var name = getCheckedRadio("customer");
+    var specList = document.getElementById(name);
+    var spec = Array.from(specList.children).map(li => li.textContent);
+    put(response, { "name": name, "spec": spec });
+}
+
+function activateSplitScreen() {
+    if (!isActive) {
+        isActive = true;
+        set('splitscreen');
+        setTimeout(function () {
+            //Reset Splitscreenmode
+            isActive = false;
+            set('splitscreen');
+        }, 60000);
+    }
+}
+
+function setSplitScreen(response) {
+    put(response, { "isActive": isActive });
 }
