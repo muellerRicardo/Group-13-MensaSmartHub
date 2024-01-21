@@ -421,12 +421,12 @@ function timerstart(){
 		if (sec == 0){
 			timer.textContent = "1:00";
 		}else if (60 - sec%60 < 10){
-			timer.textContent = (1 - parseInt(sec/60, 10)) + ":0" + (60 - sec%60);
+			timer.textContent = "0:0" + (60 - sec%60);
 		}else{
-			timer.textContent = (1 - parseInt(sec/60, 10)) + ":" + (60 - sec%60);
+			timer.textContent = "0:" + (60 - sec%60);
 		}
 		
-		if (sec >= 120){
+		if (sec >= 60){
 			splitTimer();
 			stopTimer();
 		}
