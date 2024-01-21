@@ -3,62 +3,83 @@
 
 <head>
 	<title>WoZ</title>
+	<link rel="stylesheet" href="woz.css">
 	<script type="text/javascript" src="woz.js"></script>
 </head>
 
 <body>
 
-	<h1>Student Input Interface</h1>
-
+	<h1>External Input Controller</h1>
 	<form>
 		<input type="button" value="Create DB" id="create" onclick="createDB();"><br />
 	</form>
 
-	<h2>Choose Customer</h2>
+	<div class="container">
+		<div class="left">
+			<h2>Choose Customer</h2>
+			<form>
+				<!-- http://www.w3schools.com/tags/ref_eventattributes.asp -->
+				<!-- Standard Profile -->
+				<div class="profile">
+					<input type="radio" name="customer" value="None" onclick="set('customer');" checked>None<br />
+					<ul id="None">
+					</ul>
+				</div>
+				<!-- Alice's Profile -->
+				<div class="profile">
+					<input type="radio" name="customer" value="Alice" onclick="set('customer');">Alice<br />
+					<ul id="Alice">
+						<li>Vegan</li>
+					</ul>
+				</div>
+				<!-- Bobs's Profile -->
+				<div class="profile">
+					<input type="radio" name="customer" value="Bob" onclick="set('customer');">Bob<br />
+					<ul id="Bob">
+						<li>Laktosefrei</li>
+						<li>Vegetarisch</li>
+					</ul>
+				</div>
+				<!-- Charlie's Profile -->
+				<div class="profile">
+					<input type="radio" name="customer" value="Charlie" onclick="set('customer');">Charlie<br />
+					<ul id="Charlie">
+						<li>Laktosefrei</li>
+						<li>Glutenfrei</li>
+					</ul>
+				</div>
+				<!-- Dave's Profile -->
+				<div class="profile">
+					<input type="radio" name="customer" value="Dave" onclick="set('customer');">Dave<br />
+					<ul id="Dave">
+						<li>Vegan</li>
+						<li>Glutenfrei</li>
+					</ul>
+				</div>
+				<!-- Erin's Profile -->
+				<div class="profile">
+					<input type="radio" name="customer" value="Erin" onclick="set('customer');">Erin<br />
+					<ul id="Erin">
+						<li>Vegetarisch</li>
+					</ul>
+				</div>
+				<!-- Frank's Profile -->
+				<div class="profile">
+					<input type="radio" name="customer" value="Frank" onclick="set('customer');">Frank<br />
+					<ul id="Frank">
+						<li>Laktosefrei</li>
+					</ul>
+				</div>
+			</form>
+		</div>
 
-	<form>
-		<!-- http://www.w3schools.com/tags/ref_eventattributes.asp -->
-		<!-- Standard Profile -->
-		<input type="radio" name="customer" value="None" onclick="set('customer');" checked>None<br />
-		<ul id="None">
-		</ul>
-		<!-- Alice's Profile -->
-		<input type="radio" name="customer" value="Alice" onclick="set('customer');">Alice<br />
-		<ul id="Alice">
-			<li>Vegan</li>
-		</ul>
-		<!-- Bobs's Profile -->
-		<input type="radio" name="customer" value="Bob" onclick="set('customer');">Bob<br />
-		<ul id="Bob">
-			<li>Laktosefrei</li>
-			<li>Vegetarisch</li>
-		</ul>
-		<!-- Charlie's Profile -->
-		<input type="radio" name="customer" value="Charlie" onclick="set('customer');">Charlie<br />
-		<ul id="Charlie">
-			<li>Laktosefrei</li>
-			<li>Glutenfrei</li>
-		</ul>
-		<!-- Dave's Profile -->
-		<input type="radio" name="customer" value="Dave" onclick="set('customer');">Dave<br />
-		<ul id="Dave">
-			<li>Vegan</li>
-			<li>Glutenfrei</li>
-		</ul>
-		<!-- Erin's Profile -->
-		<input type="radio" name="customer" value="Erin" onclick="set('customer');">Erin<br />
-		<ul id="Erin">
-			<li>Vegetarisch</li>
-		</ul>
-		<!-- Frank's Profile -->
-		<input type="radio" name="customer" value="Frank" onclick="set('customer');">Frank<br />
-		<ul id="Frank">
-			<li>Laktosefrei</li>
-		</ul>
-	</form>
-
-	<br />
-
+		<div class="right">
+			<h2>Splitscreen Mode</h2>
+			<form>
+				<button type="button" id="toggle_splitscreen" onclick="activateSplitScreen()">Activate!</button>
+			</form>
+		</div>
+	</div>
 </body>
 
 </html>
