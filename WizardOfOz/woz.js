@@ -125,7 +125,7 @@ var handlers = {
 
 function setCustomer(response) {
 	var name = getCheckedRadio("customer");
-	var specList = document.getElementById(name+":");
+	var specList = document.getElementById(name);
 	var spec = Array.from(specList.children).map(li => li.textContent);
 	put(response, {"name" : name, "spec" : spec});
 }
