@@ -327,14 +327,13 @@ function update() {
     for (var name in handlers) {
         // console.log("updating " + name);
         get(name);
-		// get(split);
     }
     toggleNFCFilter();
-	// toggleSplitscreen();
+	toggleSplitscreen();
 }
 
 // request updates at a fixed interval (ms)
-// var intervalID = setInterval(update, 1000);
+var intervalID = setInterval(update, 1000);
 
 ///////////////////////////////////////////////////////////////////////////////
 // your code below
@@ -343,13 +342,14 @@ var dbname = "gmci";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
     "customer": updateCustomer,
-	// "split": updateSplit,
+	"splitscreen": updateSplitScreen,
     // add further handlers here
 }
 var latestName = "None";
 var currentName;
 var currentFilter;
-var split = false; //muss noch aus der DB gelesen werden!!!
+var isActive = false;
+var isRunning = false;
 var timerset = false;
 
 function updateCustomer(response) {
@@ -357,27 +357,21 @@ function updateCustomer(response) {
     currentFilter = response.spec;
 }
 
-function updateCustomer(response) {
-    split = response.split;
+function updateSplitScreen(response) {
+    isActive = response.isActive;
 }
 
 function toggleSplitscreen(){
-	console.log("Splitscreen activated");
-	if (split){
-		console.log("reverse split");
-		if (func){
-			console.log("reset timer");
-			stopTimer();
-		}
-		reverseSplit();
-	}else if (!split){
-		console.log("split screen");
+	if (isActive && !isRunning){
+        isRunning = true;
+		console.log("Splitscreen activated");
 		splitScreen();
-	}
+	}else if(!isActive){
+        isRunning = false;
+    }
 }
 
 function splitScreen(){
-	split = true;
 	timerstart();
 	var normalWindow = document.getElementById('normalWindow');
 	var gerichte = document.getElementById('gerichte');
@@ -391,7 +385,7 @@ function splitScreen(){
 }
 
 function reverseSplit(){
-	split = false;
+	split = true;
 	var normalWindow = document.getElementById('normalWindow');
 	var gerichte = document.getElementById('gerichte');
 	var secondWindow = document.getElementById('secondWindow');
@@ -405,7 +399,7 @@ function reverseSplit(){
 }
 
 function splitTimer(){
-	if (split){
+	if (!split){
 		console.log("reverse split by timer");
 		reverseSplit();
 	}
@@ -427,7 +421,7 @@ function timerstart(){
 		}
 		
 		if (sec >= 60){
-			splitTimer();
+			reverseSplit();
 			stopTimer();
 		}
 		sec++;
@@ -439,11 +433,7 @@ function stopTimer() {
 	sec = 0;
 }
 
-
 function toggleNFCFilter() {
-    console.log("Hier!");
-    console.log("CurrentName: " + currentName);
-    console.log("LatestName: " + latestName);
     //Detect name change
     if (latestName !== currentName) {
         latestName = currentName;
